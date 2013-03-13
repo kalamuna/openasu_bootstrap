@@ -10,6 +10,16 @@
   margin-top: 20px;
 }
 
+#tabs,#messages,#action-links {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+#menu .container:before,#menu .container:after {
+  display: block;
+}
+
 /* Basic ASU Styling (from style guide) */
 #main-wrapper .region-content {
   font-family: arial;
@@ -30,11 +40,6 @@
   color: #000;
   border: 0;
   text-decoration: none;
-}
-
-#asu_search_module input.asu_search_button {
-  position: relative;
-  top: -5px;
 }
 
 #asu_search_module input.asu_search_box {
@@ -106,9 +111,15 @@ h4 {
   -webkit-box-shadow: none;
 }
 
+.navbar-fixed-top .navbar-inner,.navbar-static-top .navbar-inner {
+  border-width: 0 0;
+}
+
 #menu .navbar-inner {
   background-color: #000;
   min-height: auto;
+  box-shadow: none;
+  -webkit-box-shadow: none;
 }
 
 #menu .navbar-inner ul.nav a {
@@ -166,14 +177,14 @@ h4 {
 }
 
 /* default submenu and link fpps */
-
 .panel-pane h2 {
   font-size: 24px;
   font-weight: bold;
   color: #333;
 }
 
-.panel-pane ul, .panel-pane ul li.leaf, .panel-pane ul li.expanded, .panel-pane ul li.collapsed {
+.panel-pane ul,.panel-pane ul li.leaf,.panel-pane ul li.expanded,.panel-pane ul li.collapsed
+  {
   list-style: none;
 }
 
@@ -181,7 +192,6 @@ h4 {
   margin: 0;
   margin-left: -5px;
 }
-
 
 #main-wrapper #panels-ipe-regionid-sidebar .panel-pane ul a {
   list-style: none;

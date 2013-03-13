@@ -38,42 +38,6 @@ function openasu_bootstrap_preprocess_html(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_PANELS_LAYOUT().
- */
-function openasu_bootstrap_preprocess_asu_student_a(&$variables) {
-  _openasu_bootstrap_theme_student_menu($variables);
-}
-
-/**
- * Implements hook_preprocess_PANELS_LAYOUT().
- */
-function openasu_bootstrap_preprocess_asu_student_b(&$variables) {
-  _openasu_bootstrap_theme_student_menu($variables);
-}
-
-/**
- * Helper function to get a themed menu for the panels layouts.
- */
-function _openasu_bootstrap_theme_student_menu(&$variables) {
-  $main_menu_tree = array();
-  $main_menu_tree = menu_tree_all_data('main-menu', NULL, 2);
-  // Add the rendered output to the $main_menu_expanded variable.
-  $main_menu_expanded = menu_tree_output($main_menu_tree);
-  $variables['content']['menu'] = theme('links__system_main_menu', array(
-    'links' => $main_menu_expanded,
-    'attributes' => array(
-      'class' => array('nav pull-left'),
-    ),
-    'heading' => array(
-      'text' => t('Main menu'),
-      'level' => 'h2',
-      'class' => array('element-invisible'),
-    ),
-  )
-  );
-}
-
-/**
  * Implements hook_ctools_plugin_post_alter()
  */
 function openasu_bootstrap_ctools_plugin_post_alter(&$plugin, &$info) {
