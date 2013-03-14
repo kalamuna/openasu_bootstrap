@@ -52,22 +52,18 @@ function openasu_bootstrap_form_system_theme_settings_alter(&$form, &$form_state
     ),
     '#default_value' => variable_get('asu_brand_student_color', 'black'),
   );
-
-  // Picture settings
   $form['theme_configuration']['picture'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Featured Image'),
-    '#description' => t('If toggled on, the following image will be displayed.'),
-    '#attributes' => array('class' => array('theme-settings-bottom')),
+    '#markup' => t('Featured Image'),
+    '#type' => 'markup',
   );
-  $form['theme_configuration']['picture']['default_picture'] = array(
+  $form['theme_configuration']['default_picture'] = array(
     '#type' => 'checkbox',
     '#title' => t('Use the default image'),
-    '#default_value' => theme_get_setting('default_picture'),
+    '#default_value' => theme_get_setting('default_picture', 'openasu_bootstrap'),
     '#tree' => FALSE,
     '#description' => t('Check here if you want the theme to use the image supplied with it.')
   );
-  $form['theme_configuration']['picture']['settings'] = array(
+  $form['theme_configuration']['settings'] = array(
     '#type' => 'container',
     '#states' => array(
       // Hide the logo settings when using the default logo.
@@ -76,13 +72,13 @@ function openasu_bootstrap_form_system_theme_settings_alter(&$form, &$form_state
       ),
     ),
   );
-  $form['theme_configuration']['picture']['settings']['picture_path'] = array(
+  $form['theme_configuration']['settings']['picture_path'] = array(
     '#type' => 'textfield',
     '#title' => t('Path to custom image'),
     '#description' => t('The path to the file you would like to use as your image file instead of the default image.'),
-    '#default_value' => theme_get_setting('picture_path'),
+    '#default_value' => theme_get_setting('picture_path', 'openasu_bootstrap'),
   );
-  $form['theme_configuration']['picture']['settings']['picture_upload'] = array(
+  $form['theme_configuration']['settings']['picture_upload'] = array(
     '#type' => 'file',
     '#title' => t('Upload logo image'),
     '#maxlength' => 40,
@@ -90,6 +86,7 @@ function openasu_bootstrap_form_system_theme_settings_alter(&$form, &$form_state
   );
 
   $form['#submit'][] = 'openasu_bootstrap_settings_submit';
+  $form['#validate'][] = 'openasu_bootstrap_settings_validate';
 }
 
 function openasu_bootstrap_settings_submit($form, &$form_state) {
@@ -99,8 +96,46 @@ function openasu_bootstrap_settings_submit($form, &$form_state) {
   variable_set('asu_brand_is_student', $form_state['values']['asu_brand_is_student']);
   variable_set('asu_brand_student_color', $form_state['values']['asu_brand_student_color']);
 
+  if ($file = $form_state['values']['picture_upload']) {
+    unset($form_state['values']['picture_upload']);
+    $filename = file_unmanaged_copy($file->uri);
+    $form_state['values']['default_picture'] = 0;
+    $form_state['values']['picture_path'] = $filename;
+  }
+
+  // If the user entered a path relative to the system files directory for
+  // a logo or favicon, store a public:// URI so the theme system can handle it.
+  if (!empty($form_state['values']['picture_path'])) {
+    $form_state['values']['picture_path'] = _system_theme_settings_validate_path($form_state['values']['picture_path']);
+  }
+  
   // ASU header needs a cache_clear
   if (module_exists('asu_brand')) {
     asu_brand_cache_clear();
+  }
+}
+
+function openasu_bootstrap_settings_validate($form, &$form_state) {
+  // Handle file uploads.
+  $validators = array('file_validate_is_image' => array());
+
+  // Check for a new uploaded logo.
+  $file = file_save_upload('picture_upload', $validators);
+  if (isset($file)) {
+    // File upload was attempted.
+    if ($file) {
+      // Put the temporary file in form_values so we can save it on submit.
+      $form_state['values']['picture_upload'] = $file;
+    }
+    else {
+      // File upload failed.
+      form_set_error('logo_picture', t('The logo could not be uploaded.'));
+    }
+  }
+  if ($form_state['values']['picture_path']) {
+    $path = _system_theme_settings_validate_path($form_state['values']['picture_path']);
+    if (!$path) {
+      form_set_error('picture_path', t('The custom logo path is invalid.'));
+    }
   }
 }

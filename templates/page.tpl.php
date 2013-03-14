@@ -94,12 +94,7 @@
 
     <section class="section" id="picture">
       <div class="container">
-        <div class="asu-a-container asu-a-header clearfix panel-panel">
-          <div
-            class="asu-a-container-inner asu-a-header-inner panel-panel-inner">
-            <?php // ASU pic will go here ?>
-          </div>
-        </div>
+        <?php print $asu_picture; ?>
       </div>
     </section>
 
@@ -122,7 +117,7 @@
                         'level' => 'h2',
                         'class' => array('element-invisible'),
                       ),
-              )
+                    )
                   ); ?>
             </div>
           </div>

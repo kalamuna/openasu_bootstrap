@@ -49,6 +49,28 @@ function openasu_bootstrap_ctools_plugin_post_alter(&$plugin, &$info) {
 }
 
 /**
+ * Override or insert variables into the page template.
+ *
+ * Implements template_process_page().
+ */
+function openasu_bootstrap_preprocess_page(&$variables) {
+  if (!theme_get_setting('default_picture', 'openasu_bootstrap')) {
+    $variables['asu_picture'] = theme('image_style', array(
+      'style_name' => 'panopoly_image_full', 
+      'path' => theme_get_setting('picture_path', 'openasu_bootstrap'),
+      )
+    );
+  }
+  else {
+    $variables['asu_picture'] = theme('image', array(
+      'path' => drupal_get_path('theme', 'openasu_bootstrap') . '/default_picture.jpg',
+      'attributes' => array('class' => 'panopoly-image-full'),
+      )
+    );
+  }
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  */
 function openasu_bootstrap_form_panels_edit_style_settings_form_alter(&$form, &$form_state) {
