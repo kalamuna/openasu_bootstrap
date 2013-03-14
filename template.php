@@ -68,6 +68,12 @@ function openasu_bootstrap_preprocess_page(&$variables) {
       )
     );
   }
+  
+  // Get the entire main menu tree.
+  $main_menu_tree = array();
+  $main_menu_tree = menu_tree_all_data('main-menu', NULL, 1);
+  // Add the rendered output to the $main_menu_expanded variable.
+  $variables['main_menu_asu'] = menu_tree_output($main_menu_tree);
 }
 
 /**

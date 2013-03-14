@@ -108,17 +108,16 @@
             </a>
             <div class='nav-collapse'>
               <?php print theme('links__system_main_menu', array(
-                'links' => $main_menu_expanded,
+                'links' => $main_menu_asu,
                 'attributes' => array(
-                        'class' => array('nav pull-left'),
-                      ),
-                      'heading' => array(
-                        'text' => t('Main menu'),
-                        'level' => 'h2',
-                        'class' => array('element-invisible'),
-                      ),
-                    )
-                  ); ?>
+                  'class' => array('nav pull-left'),
+                ),
+                'heading' => array(
+                  'text' => t('Main menu'),
+                  'level' => 'h2',
+                  'class' => array('element-invisible'),
+                ),
+              )); ?>
             </div>
           </div>
         </nav>
