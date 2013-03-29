@@ -54,18 +54,12 @@ function openasu_bootstrap_ctools_plugin_post_alter(&$plugin, &$info) {
  * Implements template_process_page().
  */
 function openasu_bootstrap_preprocess_page(&$variables) {
-  if (!theme_get_setting('default_picture', 'openasu_bootstrap')) {
+  $variables['asu_picture'] = '';
+  if (theme_get_setting('default_picture', 'openasu_bootstrap')) {
     $variables['asu_picture'] = theme('image_style', array(
-      'style_name' => 'panopoly_image_full', 
+      'style_name' => 'panopoly_image_full',
       'path' => theme_get_setting('picture_path', 'openasu_bootstrap'),
-      )
-    );
-  }
-  else {
-    $variables['asu_picture'] = theme('image', array(
-      'path' => drupal_get_path('theme', 'openasu_bootstrap') . '/default_picture.jpg',
-      'attributes' => array('class' => 'panopoly-image-full'),
-      )
+    )
     );
   }
 }
@@ -93,7 +87,7 @@ function openasu_bootstrap_preprocess_block(&$variables) {
         'level' => 'h2',
         'class' => array('element-invisible'),
       ),));
-      unset($block->subject);
+      $block->subject = '';
   } 
 }
 
@@ -104,6 +98,15 @@ function openasu_bootstrap_form_panels_edit_style_settings_form_alter(&$form, &$
   // Add some extra ASU styles if extra styles are on
   if (isset($form['general_settings']['settings']['title'])) {
     $styles = array('title', 'content');
+    foreach ($styles as $style) {
+      $form['general_settings']['settings'][$style]['attributes']['#options'] += array(
+        'featured-text' => 'ASU FEATURED TEXT',
+      );
+    }
+  }
+}
+
+ 'content');
     foreach ($styles as $style) {
       $form['general_settings']['settings'][$style]['attributes']['#options'] += array(
         'featured-text' => 'ASU FEATURED TEXT',

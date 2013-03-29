@@ -91,13 +91,15 @@
         </div>
       </nav>
     </header>
-
-    <section class="section" id="picture">
-      <div class="container">
-        <?php print $asu_picture; ?>
-      </div>
-    </section>
-
+    
+    <?php if ($asu_picture): ?>
+      <section class="section" id="picture">
+        <div class="container">
+          <?php print $asu_picture; ?>
+        </div>
+      </section>
+    <?php endif; ?>
+    
     <section class="section" id="menu">
       <div class="container">
         <nav class='navbar navbar-fixed-top'>

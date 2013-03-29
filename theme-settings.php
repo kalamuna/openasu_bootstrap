@@ -58,17 +58,17 @@ function openasu_bootstrap_form_system_theme_settings_alter(&$form, &$form_state
   );
   $form['theme_configuration']['default_picture'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Use the default image'),
+    '#title' => t('Use header image'),
     '#default_value' => theme_get_setting('default_picture', 'openasu_bootstrap'),
     '#tree' => FALSE,
-    '#description' => t('Check here if you want the theme to use the image supplied with it.')
+    '#description' => t('Check here if you want to load up a custom header image')
   );
   $form['theme_configuration']['settings'] = array(
     '#type' => 'container',
     '#states' => array(
       // Hide the logo settings when using the default logo.
       'invisible' => array(
-        'input[name="default_picture"]' => array('checked' => TRUE),
+        'input[name="default_picture"]' => array('checked' => FALSE),
       ),
     ),
   );
@@ -99,7 +99,7 @@ function openasu_bootstrap_settings_submit($form, &$form_state) {
   if ($file = $form_state['values']['picture_upload']) {
     unset($form_state['values']['picture_upload']);
     $filename = file_unmanaged_copy($file->uri);
-    $form_state['values']['default_picture'] = 0;
+    $form_state['values']['default_picture'] = 1;
     $form_state['values']['picture_path'] = $filename;
   }
 
@@ -136,6 +136,10 @@ function openasu_bootstrap_settings_validate($form, &$form_state) {
     $path = _system_theme_settings_validate_path($form_state['values']['picture_path']);
     if (!$path) {
       form_set_error('picture_path', t('The custom logo path is invalid.'));
+    }
+  }
+}
+));
     }
   }
 }
