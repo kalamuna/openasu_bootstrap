@@ -24,4 +24,4 @@ features[] = secondary_menu
 
 plugins[panels][styles] = styles
 
-settings[default_picture] = 1
+settings[default_picture] = 0

@@ -139,7 +139,3 @@ function openasu_bootstrap_settings_validate($form, &$form_state) {
     }
   }
 }
-));
-    }
-  }
-}
