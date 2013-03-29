@@ -107,17 +107,7 @@
               class='icon-bar'></span> <span class='icon-bar'></span>
             </a>
             <div class='nav-collapse'>
-              <?php print theme('links__system_main_menu', array(
-                'links' => $main_menu_asu,
-                'attributes' => array(
-                  'class' => array('nav pull-left'),
-                ),
-                'heading' => array(
-                  'text' => t('Main menu'),
-                  'level' => 'h2',
-                  'class' => array('element-invisible'),
-                ),
-              )); ?>
+              <?php print render($page['menu']); ?>
             </div>
           </div>
         </nav>

@@ -68,12 +68,33 @@ function openasu_bootstrap_preprocess_page(&$variables) {
       )
     );
   }
-  
-  // Get the entire main menu tree.
-  $main_menu_tree = array();
-  $main_menu_tree = menu_tree_all_data('main-menu', NULL, 1);
-  // Add the rendered output to the $main_menu_expanded variable.
-  $variables['main_menu_asu'] = menu_tree_output($main_menu_tree);
+}
+
+/**
+ * Override or insert variables into the page template.
+ *
+ * Implements template_process_page().
+ */
+function openasu_bootstrap_preprocess_block(&$variables) {
+  $block = $variables['block'];
+  if ($block->delta == 'main-menu' && $block->module == 'system' && $block->status == 1 && $block->theme = 'openasu_bootstrap') {
+    // Get the entire main menu tree.
+    $main_menu_tree = array();
+    $main_menu_tree = menu_tree_all_data('main-menu', NULL, 2);
+    // Add the rendered output to the $main_menu_expanded variable.
+    $main_menu_asu = menu_tree_output($main_menu_tree);
+    $variables['content'] = theme('links__system_main_menu', array(
+      'links' => $main_menu_asu,
+      'attributes' => array(
+        'class' => array('nav pull-left'),
+      ),
+      'heading' => array(
+        'text' => t('Main menu'),
+        'level' => 'h2',
+        'class' => array('element-invisible'),
+      ),));
+      unset($block->subject);
+  } 
 }
 
 /**
@@ -90,3 +111,4 @@ function openasu_bootstrap_form_panels_edit_style_settings_form_alter(&$form, &$
     }
   }
 }
+
