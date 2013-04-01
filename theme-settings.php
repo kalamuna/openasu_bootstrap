@@ -52,16 +52,17 @@ function openasu_bootstrap_form_system_theme_settings_alter(&$form, &$form_state
     ),
     '#default_value' => variable_get('asu_brand_student_color', 'black'),
   );
+  /*
   $form['theme_configuration']['picture'] = array(
-    '#markup' => t('Featured Image'),
+    '#markup' => t('Global Header Image'),
     '#type' => 'markup',
-  );
+  ); */
   $form['theme_configuration']['default_picture'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Use header image'),
+    '#title' => t('Use a global header image?'),
     '#default_value' => theme_get_setting('default_picture', 'openasu_bootstrap'),
     '#tree' => FALSE,
-    '#description' => t('Check here if you want to load up a custom header image')
+    '#description' => t('Upload an image the be displayed across all of the pages of your site'),
   );
   $form['theme_configuration']['settings'] = array(
     '#type' => 'container',
@@ -74,13 +75,13 @@ function openasu_bootstrap_form_system_theme_settings_alter(&$form, &$form_state
   );
   $form['theme_configuration']['settings']['picture_path'] = array(
     '#type' => 'textfield',
-    '#title' => t('Path to custom image'),
-    '#description' => t('The path to the file you would like to use as your image file instead of the default image.'),
+    '#title' => t('Current header image'),
+    '#attributes' => array('disabled' => TRUE),
     '#default_value' => theme_get_setting('picture_path', 'openasu_bootstrap'),
   );
   $form['theme_configuration']['settings']['picture_upload'] = array(
     '#type' => 'file',
-    '#title' => t('Upload logo image'),
+    '#title' => t('Upload new header image'),
     '#maxlength' => 40,
     '#description' => t("If you don't have direct file access to the server, use this field to upload your logo.")
   );

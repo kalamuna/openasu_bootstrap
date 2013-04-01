@@ -55,7 +55,7 @@ function openasu_bootstrap_ctools_plugin_post_alter(&$plugin, &$info) {
  */
 function openasu_bootstrap_preprocess_page(&$variables) {
   $variables['asu_picture'] = '';
-  if (theme_get_setting('default_picture', 'openasu_bootstrap')) {
+  if (theme_get_setting('default_picture', 'openasu_bootstrap') && theme_get_setting('picture_path', 'openasu_bootstrap')) {
     $variables['asu_picture'] = theme('image_style', array(
       'style_name' => 'panopoly_image_full',
       'path' => theme_get_setting('picture_path', 'openasu_bootstrap'),
