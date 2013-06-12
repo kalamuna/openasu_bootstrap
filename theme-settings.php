@@ -52,11 +52,13 @@ function openasu_bootstrap_form_system_theme_settings_alter(&$form, &$form_state
     ),
     '#default_value' => variable_get('asu_brand_student_color', 'black'),
   );
-  /*
-  $form['theme_configuration']['picture'] = array(
-    '#markup' => t('Global Header Image'),
-    '#type' => 'markup',
-  ); */
+  $form['theme_configuration']['hide_local_menu_navicon'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Hide local menu Navicon'),
+    '#default_value' => theme_get_setting('hide_local_menu_navicon', 'openasu_bootstrap'),
+    '#tree' => FALSE,
+    '#description' => t('This will disable the navicon for the local menu on mobile and tablet devices. The ASU Header navicon will now activate the local menu.'),
+  );
   $form['theme_configuration']['default_picture'] = array(
     '#type' => 'checkbox',
     '#title' => t('Use a global header image?'),

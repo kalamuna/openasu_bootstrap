@@ -55,11 +55,28 @@ function openasu_bootstrap_ctools_plugin_post_alter(&$plugin, &$info) {
  */
 function openasu_bootstrap_preprocess_page(&$variables) {
   $variables['asu_picture'] = '';
+  $variables['asu_local_navicon'] = '';
+    
+  // Make sure default picture gets responsive panopoly stylingz
   if (theme_get_setting('default_picture', 'openasu_bootstrap') && theme_get_setting('picture_path', 'openasu_bootstrap')) {
     $variables['asu_picture'] = theme('image_style', array(
       'style_name' => 'panopoly_image_full',
       'path' => theme_get_setting('picture_path', 'openasu_bootstrap'),
     )
+    );
+  }
+  
+  // Build the navicon if applicable
+  if (!theme_get_setting('hide_local_menu_navicon', 'openasu_bootstrap')) {
+    $variables['asu_local_navicon'] = l("<span class='icon-bar'></span><span class='icon-bar'></span><span class='icon-bar'></span>", '',
+      array(
+        'attributes' => array(
+          'data-target' => '.nav-collapse',
+          'data-toggle' => 'collapse',
+          'class' => 'btn btn-navbar'
+        ),
+        'html' => TRUE
+      )
     );
   }
 }

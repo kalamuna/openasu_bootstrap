@@ -91,23 +91,29 @@
         </div>
       </nav>
     </header>
-    
+
     <?php if ($asu_picture): ?>
-      <section class="section" id="picture">
-        <div class="container">
-          <?php print $asu_picture; ?>
-        </div>
-      </section>
+    <section class="section" id="picture">
+      <div class="container">
+        <?php print $asu_picture; ?>
+      </div>
+    </section>
     <?php endif; ?>
-    
+
     <section class="section" id="menu">
       <div class="container">
         <nav class='navbar navbar-fixed-top'>
           <div class='navbar-inner'>
-            <a class='btn btn-navbar' data-target='.nav-collapse'
-              data-toggle='collapse'> <span class='icon-bar'></span> <span
-              class='icon-bar'></span> <span class='icon-bar'></span>
-            </a>
+            <?php if ($site_name): ?>
+              <div class='navbar-sitename-collapse'>
+                <?php print $site_name; ?>
+              </div>
+            <?php endif; ?>
+          
+            <?php if ($asu_local_navicon): ?>
+              <?php print $asu_local_navicon; ?>
+            <?php endif; ?>
+
             <div class='nav-collapse'>
               <?php print render($page['menu']); ?>
             </div>
