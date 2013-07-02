@@ -92,12 +92,23 @@
       </nav>
     </header>
 
+    <?php if ($site_name): ?>
+      <section class="section" id="site-name-desktop">
+        <div class="container">
+          <h1 class='site-title'>
+            <span class='first-word'><?php print $site_name_first; ?> </span>
+            <?php print $site_name_last; ?>
+          </h1>
+        </div>
+      </section>
+    <?php endif; ?>
+
     <?php if ($asu_picture): ?>
-    <section class="section" id="picture">
-      <div class="container">
-        <?php print $asu_picture; ?>
-      </div>
-    </section>
+      <section class="section" id="picture">
+        <div class="container">
+          <?php print $asu_picture; ?>
+        </div>
+      </section>
     <?php endif; ?>
 
     <section class="section" id="menu">
@@ -106,7 +117,10 @@
           <div class='navbar-inner'>
             <?php if ($site_name): ?>
               <div class='navbar-sitename-collapse'>
-                <?php print $site_name; ?>
+                <h1 class='site-title'>
+                  <span class='first-word'><?php print $site_name_first; ?></span>
+                  <?php print $site_name_last; ?>
+                </h1>
               </div>
             <?php endif; ?>
           

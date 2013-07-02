@@ -10,6 +10,15 @@
   margin-top: 20px;
 }
 
+#site-name-desktop {
+  background-color: #000;
+  height: 40px;
+}
+
+#site-name-desktop h1 {
+  line-height: 28px;
+}
+
 #picture img.panopoly-image-full {
   margin-bottom: 0;
 }
@@ -61,6 +70,17 @@ h1,h2,h3,h4 {
   letter-spacing: 0;
   line-height: 0;
   color: #ffb310;
+}
+
+h1.site-title .first-word {
+  color: #AFA593;
+}
+
+h1.site-title {
+  color: #FFF;
+  margin: 0;
+  padding: 5px 13px;
+  font-size: 2.5em;
 }
 
 h2 {
@@ -214,6 +234,7 @@ h4 {
   text-decoration: underline;
 }
 
+
 /* responsive */
 @media ( min-width : 768px) and (max-width: 979px) {
   #asu_hdr {
@@ -244,5 +265,11 @@ h4 {
     height: 0;
     display: block;
     background-color: black;
+  }
+  h1.site-title {
+    font-size: 24px;
+  }
+  #site-name-desktop {
+    display: none;
   }
 }

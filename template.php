@@ -66,6 +66,13 @@ function openasu_bootstrap_preprocess_page(&$variables) {
     );
   }
   
+  // Parse sitename for color
+  $variables['site_name_first'] = '';
+  $variables['site_name_last'] = '';
+  $middle = strrpos(substr($variables['site_name'], 0, floor(strlen($variables['site_name']) / 2)), ' ') + 1;
+  $variables['site_name_first'] = substr($variables['site_name'], 0, $middle);  // "The Quick : Brown Fox "
+  $variables['site_name_last'] = substr($variables['site_name'], $middle);  // "Jumped Over The Lazy / Dog"
+  
   // Build the navicon if applicable
   if (!theme_get_setting('hide_local_menu_navicon', 'openasu_bootstrap')) {
     $variables['asu_local_navicon'] = l("<span class='icon-bar'></span><span class='icon-bar'></span><span class='icon-bar'></span>", '',
