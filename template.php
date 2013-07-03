@@ -10,11 +10,6 @@
  * Implements template_preprocess_html().
  */
 function openasu_bootstrap_preprocess_html(&$variables) {
-  // Set the header color
-  if (module_exists('asu_brand')) {
-    drupal_add_css(drupal_get_path('theme', 'openasu_bootstrap') . '/css/header/' .
-      variable_get('asu_brand_header_template', ASU_BRAND_HEADER_TEMPLATE_DEFAULT) .  '.css');
-  }
   // Load student CSS if this is a student template
   if (variable_get('asu_brand_is_student', 'default') == 'student') {
     drupal_add_css(drupal_get_path('theme', 'openasu_bootstrap') . '/css/student/' .
@@ -23,6 +18,7 @@ function openasu_bootstrap_preprocess_html(&$variables) {
       'media' => 'screen',
       'weight' => '100',
       )
+      
     );
     // Load menu CSS for student header
     if (variable_get('asu_brand_student_color', 'black') != 'black') {

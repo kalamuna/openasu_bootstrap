@@ -128,6 +128,10 @@ h4 {
   text-shadow: none;
 }
 
+.navbar-inner {
+  background: transparent;
+}
+
 .navbar-sitename-collapse {
   display: none;
   font-family: arial;
@@ -140,6 +144,14 @@ h4 {
   border-top: 5px transparent solid;
   padding: 10px;
   float: left;
+}
+
+#asu_universal_nav ul a {
+  display: block;
+  font: 12px/12px Arial,Helvetica,sans-serif;
+  color: #000;
+  text-decoration: none;
+  padding: 8px 8px 0px 8px;
 }
 
 .navbar .nav>.active>a,.navbar .nav>.active>a:hover,.navbar .nav>.active>a:focus
@@ -285,5 +297,8 @@ h4 {
   }
   #site-name-desktop {
     display: none;
+  }
+  .navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
+    padding: 0;
   }
 }
