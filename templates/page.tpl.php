@@ -92,6 +92,20 @@
       </nav>
     </header>
 
+    <?php if (!$asu_local_navicon): ?>
+      <section class="section hidden-desktop" id="menu">
+        <div class="container">
+          <nav class='navbar navbar-fixed-top fixer'>
+            <div class='navbar-inner fixer'>
+              <div class='nav-collapse'>
+                <?php print render($page['menu']); ?>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </section>
+    <?php endif; ?>
+
     <?php if ($site_name): ?>
       <section class="section" id="site-name-desktop">
         <div class="container">
@@ -128,7 +142,7 @@
               <?php print $asu_local_navicon; ?>
             <?php endif; ?>
 
-            <div class='nav-collapse'>
+            <div class='<?php $asu_local_navicon ? print 'nav-collapse' : print 'visible-desktop'; ?>'>
               <?php print render($page['menu']); ?>
             </div>
           </div>

@@ -153,6 +153,20 @@ h4 {
   border-width: 0 0;
 }
 
+.nav-collapse-total {
+  overflow: hidden;
+  height: 0;
+  display: block;
+}
+
+.navbar-inner.fixer {
+  padding: 0;
+}
+
+.navbar.navbar-fixed-top.fixer {
+  margin-bottom: 0;
+}
+
 #menu .navbar-inner {
   background-color: #000;
   min-height: auto;

@@ -25,4 +25,4 @@ features[] = secondary_menu
 plugins[panels][styles] = styles
 
 settings[default_picture] = 0
-settings[hide_local_menu_navicon] = 0
+settings[hide_local_menu_navicon] = 1
