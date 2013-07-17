@@ -18,7 +18,7 @@ function openasu_bootstrap_preprocess_html(&$variables) {
       'media' => 'screen',
       'weight' => '100',
       )
-      
+
     );
     // Load menu CSS for student header
     if (variable_get('asu_brand_student_color', 'black') != 'black') {
@@ -52,7 +52,7 @@ function openasu_bootstrap_ctools_plugin_post_alter(&$plugin, &$info) {
 function openasu_bootstrap_preprocess_page(&$variables) {
   $variables['asu_picture'] = '';
   $variables['asu_local_navicon'] = '';
-    
+
   // Make sure default picture gets responsive panopoly stylingz
   if (theme_get_setting('default_picture', 'openasu_bootstrap') && theme_get_setting('picture_path', 'openasu_bootstrap')) {
     $variables['asu_picture'] = theme('image_style', array(
@@ -61,14 +61,14 @@ function openasu_bootstrap_preprocess_page(&$variables) {
     )
     );
   }
-  
+
   // Parse sitename for color
   $variables['site_name_first'] = '';
   $variables['site_name_last'] = '';
   $middle = strrpos(substr($variables['site_name'], 0, floor(strlen($variables['site_name']) / 2)), ' ') + 1;
   $variables['site_name_first'] = substr($variables['site_name'], 0, $middle);  // "The Quick : Brown Fox "
   $variables['site_name_last'] = substr($variables['site_name'], $middle);  // "Jumped Over The Lazy / Dog"
-  
+
   // Build the navicon if applicable
   if (!theme_get_setting('hide_local_menu_navicon', 'openasu_bootstrap')) {
     $variables['asu_local_navicon'] = l("<span class='icon-bar'></span><span class='icon-bar'></span><span class='icon-bar'></span>", '',
@@ -108,15 +108,15 @@ function openasu_bootstrap_preprocess_block(&$variables) {
         'class' => array('element-invisible'),
       ),));
       $block->subject = '';
-  } 
+  }
 }
 
 /**
  * Implements hook_block_view_alter().
- * 
+ *
  * We are using this to inject the bootstrap data-toggle/data-target attributes into the ASU
  * Header so that it can also activate the local menu.
- * 
+ *
  */
 function openasu_bootstrap_block_view_alter(&$data, $block) {
   // Add the attributes if applicable
@@ -170,6 +170,7 @@ function openasu_bootstrap_links__system_main_menu($variables) {
     foreach ($links as $key => $link) {
       $class = array($key);
 
+      $class[] = 'asu-menu';
       // Add first/last/active classes to help out themers.
       if ($i == 1) {
         $class[] = 'first';
