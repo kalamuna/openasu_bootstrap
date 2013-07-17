@@ -269,7 +269,7 @@ h4 {
   color: #333;
 }
 
-.panel-pane ul,.panel-pane ul li.leaf,.panel-pane ul li.expanded,.panel-pane ul li.collapsed
+.panel-pane ul li.leaf,.panel-pane ul li.expanded,.panel-pane ul li.collapsed
   {
   list-style: none;
 }
