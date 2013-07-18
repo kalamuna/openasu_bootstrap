@@ -67,7 +67,6 @@
  *
  * Regions:
  * - $page['content']: The main content of the current page.
-
  *
  * @see template_preprocess()
  * @see template_preprocess_page()
@@ -137,7 +136,7 @@
                 </h1>
               </div>
             <?php endif; ?>
-          
+
             <?php if ($asu_local_navicon): ?>
               <?php print $asu_local_navicon; ?>
             <?php endif; ?>

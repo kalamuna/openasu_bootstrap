@@ -71,7 +71,7 @@ function openasu_bootstrap_preprocess_page(&$variables) {
 
   // Build the navicon if applicable
   if (!theme_get_setting('hide_local_menu_navicon', 'openasu_bootstrap')) {
-    $variables['asu_local_navicon'] = l("<span class='icon-bar'></span><span class='icon-bar'></span><span class='icon-bar'></span>", '',
+    $variables['asu_local_navicon'] = str_replace('href="/"', 'href="#"', l("<span class='icon-bar'></span><span class='icon-bar'></span><span class='icon-bar'></span>", NULL,
       array(
         'attributes' => array(
           'data-target' => '.nav-collapse',
@@ -80,7 +80,7 @@ function openasu_bootstrap_preprocess_page(&$variables) {
         ),
         'html' => TRUE
       )
-    );
+    ));
   }
 }
 
@@ -170,7 +170,6 @@ function openasu_bootstrap_links__system_main_menu($variables) {
     foreach ($links as $key => $link) {
       $class = array($key);
 
-      $class[] = 'asu-menu';
       // Add first/last/active classes to help out themers.
       if ($i == 1) {
         $class[] = 'first';
