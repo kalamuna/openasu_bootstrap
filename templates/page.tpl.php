@@ -151,8 +151,10 @@
 
     <?php if ($messages): ?>
     <div id="messages">
-      <div class="section clearfix">
-        <?php print $messages; ?>
+      <div class="container">
+        <div class="section clearfix">
+          <?php print $messages; ?>
+        </div>
       </div>
     </div>
     <!-- /.section, /#messages -->
