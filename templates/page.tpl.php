@@ -117,11 +117,13 @@
     <?php endif; ?>
 
     <?php if ($asu_picture): ?>
-      <section class="section" id="picture">
-        <div class="container">
-          <?php print $asu_picture; ?>
-        </div>
-      </section>
+      <?php if ($is_front) : ?>
+        <section class="section" id="picture">
+          <div class="container">
+            <?php print $asu_picture; ?>
+          </div>
+        </section>
+      <?php endif; ?>
     <?php endif; ?>
 
     <section class="section" id="menu">
