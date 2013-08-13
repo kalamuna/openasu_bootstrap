@@ -341,11 +341,20 @@ h4 {
   .navbar-sitename-collapse {
     display: block;
   }
-  .nav-collapse,.nav-collapse.collapse {
+  .nav-collapse,.nav-collapse.collapse  {
     overflow: hidden;
     height: 0;
     display: block;
     background-color: black;
+  }
+  .in .nav-collapse,.in .nav-collapse.collapse  {
+    overflow: inherit;
+    height: auto;
+    display: block;
+    background-color: black;
+  }
+  .hidden-collapse {
+    height: 0;
   }
   h1.site-title {
     font-size: 24px;
