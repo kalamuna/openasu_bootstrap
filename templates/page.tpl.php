@@ -201,6 +201,15 @@
       </div>
     </footer>
 
+        <!-- Page Footer -->
+    <section class='section' id='closure'>
+      <div class='container'>
+        <div class='row-fluid'>
+          <?php print render($page['closure']); ?>
+        </div>
+      </div>
+    </section>
+
   </div>
 </div>
 <!-- /#page, /#page-wrapper -->

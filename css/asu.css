@@ -267,6 +267,24 @@ h4 {
   color: #000;
 }
 
+#closure {
+  text-align: right;
+  margin: 30px 30px 0 0;
+  padding: 0;
+}
+
+#closure p {
+  padding: 0;
+}
+
+#closure a {
+  text-decoration: none;
+}
+
+#closure a:hover {
+  text-decoration: none;
+  color: #000;
+}
 
 /* default submenu and link fpps */
 .panel-pane h2 {
