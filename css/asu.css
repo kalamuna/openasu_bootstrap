@@ -16,7 +16,7 @@ body {
   background-attachment: fixed;
 }
 
-@media ( min-width : 979px) {
+@media ( min-width : 930px) {
   body {
     height: 100%;
     background-size: 100% 100%;
@@ -39,7 +39,7 @@ body {
   }
 }
 
-@media (max-width: 979px) and (min-width: 768px) {
+@media (max-width: 930px) and (min-width: 768px) {
   .container,
   .navbar-static-top .container,
   .navbar-fixed-top .container,
@@ -408,7 +408,7 @@ ul.dropdown-menu .active a:focus,
 
 
 /* responsive */
-@media ( min-width : 768px) and (max-width: 979px) {
+@media ( min-width : 768px) and (max-width: 930px) {
   #asu_hdr {
     min-width: 768px;
   }
@@ -428,7 +428,7 @@ ul.dropdown-menu .active a:focus,
   }
 }
 
-@media ( max-width : 979px) {
+@media ( max-width : 930px) {
   #masthead .navbar-fixed-top {
     margin-bottom: 0;
   }

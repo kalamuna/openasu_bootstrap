@@ -83,7 +83,7 @@ iefix: without setting the width of the nav and a discrete background color, ie 
   }
 }
 
-@media ( max-width : 979px) {
+@media ( max-width : 930px) {
   #menu .navbar-inner {
     background: #000;
   }
