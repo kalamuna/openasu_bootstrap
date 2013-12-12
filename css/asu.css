@@ -476,3 +476,9 @@ ul.dropdown-menu .active a:focus,
   }
 }
 
+/* Android responsive dropdown bugfix */
+@media (max-width: 480px) {
+  .nav-collapse {
+    -webkit-transform: none;
+  }
+}
