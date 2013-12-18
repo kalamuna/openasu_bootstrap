@@ -1,5 +1,5 @@
-/* 
-Gradient background bits 
+/*
+Gradient background bits
 Moved this stuff from student.css
 */
 
@@ -452,8 +452,6 @@ ul.dropdown-menu .active a:focus,
   }
   .hidden-collapse {
     height: 0;
-    margin-left: -20px;
-    margin-right: -20px;
   }
   h1.site-title {
     font-size: 24px;
