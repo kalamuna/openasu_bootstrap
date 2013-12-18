@@ -418,6 +418,7 @@ ul.dropdown-menu .active a:focus,
   #asu_hdr,#asu_black_footer {
     min-width: auto;
   }
+  #menu.in,
   .navbar-fixed-top,
   .navbar-fixed-bottom,
   .navbar-static-top,
