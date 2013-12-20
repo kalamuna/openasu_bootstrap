@@ -320,6 +320,8 @@ h4 {
   content: none;
 }
 
+
+
 #menu .navbar-inner ul.nav a {
   padding-left: 23px;
   padding-right: 23px;
@@ -330,11 +332,11 @@ h4 {
 }
 
 #menu .navbar ul.nav ul.dropdown-menu li a {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: normal;
   display: block;
-  line-height: 20px;
-  padding: 3px 20px;
+  line-height: 120%;
+  padding: 10px;
   background: #4F5557;
   border: 0;
   color: #fff;
@@ -354,8 +356,23 @@ ul.dropdown-menu .active a:focus,
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
 }
 
+.navbar .nav > .dropdown {
+  padding-right: 0;
+}
+
+.navbar .nav > .dropdown.active {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
 #menu .navbar ul.nav ul.dropdown-menu li a.active {
   color: #ffb310;
+}
+
+#menu .navbar ul.nav ul.dropdown-menu li a:hover {
+color: #000000;
 }
 
 #closure {
@@ -408,6 +425,16 @@ ul.dropdown-menu .active a:focus,
 
 
 /* responsive */
+@media  (max-width: 930px) {
+  #menu .navbar-inner ul.nav a {
+    border-bottom: 5px transparent solid;
+    border-top: 5px transparent solid;
+  }
+  .navbar .nav > .dropdown > a {
+    float: none;
+  }
+}
+
 @media ( min-width : 768px) and (max-width: 930px) {
   #asu_hdr {
     min-width: 768px;
@@ -447,7 +474,7 @@ ul.dropdown-menu .active a:focus,
   .in .nav-collapse,
   .in .nav-collapse.collapse  {
     overflow: inherit;
-    height: auto;
+    height: auto !important;
     display: block;
     background-color: black;
   }
